@@ -37,7 +37,7 @@ export class TagInputForm {
     @ViewChild('input') public input;
     public form: FormGroup;
 
-    constructor(private renderer: Renderer) {}
+    constructor(public renderer: Renderer) {}
 
     ngOnInit() {
         // creating form
@@ -116,7 +116,7 @@ export class TagInputForm {
      * @name onKeyDown
      * @param $event
      */
-    private onKeyDown($event) {
+    public onKeyDown($event) {
         return this.onKeydown.emit($event);
     }
 }

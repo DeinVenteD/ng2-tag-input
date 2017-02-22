@@ -47,17 +47,17 @@ export class TagComponent {
     /**
      * @name displayBy {string}
      */
-    @Input() private displayBy: string;
+    @Input() public displayBy: string;
 
     /**
      * @name identifyBy {string}
      */
-    @Input() private identifyBy: string;
+    @Input() public identifyBy: string;
 
     /**
      * @name index {number}
      */
-    @Input() private index: number;
+    @Input() public index: number;
 
     /**
      * @name onSelect
@@ -93,13 +93,13 @@ export class TagComponent {
      * @name editModeActivated
      * @type {boolean}
      */
-    private editModeActivated: boolean = false;
+    public editModeActivated: boolean = false;
 
     /**
      * @name rippleState
      * @type {string}
      */
-    private rippleState: string = 'none';
+    public rippleState: string = 'none';
 
     /**
      * @name ripple {TagRipple}
@@ -189,7 +189,7 @@ export class TagComponent {
      * @name getContentEditableText
      * @returns {string}
      */
-    private getContentEditableText(): string {
+    public getContentEditableText(): string {
         return this.element.nativeElement.querySelector('[contenteditable]').innerText.trim();
     }
 
@@ -197,7 +197,7 @@ export class TagComponent {
      * @name disableEditMode
      * @param $event
      */
-    private disableEditMode($event: KeyboardEvent): void {
+    public disableEditMode($event: KeyboardEvent): void {
         this.editModeActivated = false;
         $event.preventDefault();
     }
@@ -205,7 +205,7 @@ export class TagComponent {
     /**
      * @name storeNewValue
      */
-    private storeNewValue(): void {
+    public storeNewValue(): void {
         const input = this.getContentEditableText();
 
         const exists = (model: TagModel) => {
@@ -230,7 +230,7 @@ export class TagComponent {
      * @name isDeleteIconVisible
      * @returns {boolean}
      */
-    private isDeleteIconVisible(): boolean {
+    public isDeleteIconVisible(): boolean {
         return !this.readonly && this.removable && !this.editModeActivated;
     }
 
@@ -238,7 +238,7 @@ export class TagComponent {
      * @name isRippleVisible
      * @returns {boolean}
      */
-    private isRippleVisible(): boolean {
+    public isRippleVisible(): boolean {
         return !this.readonly && !this.editModeActivated;
     }
 }

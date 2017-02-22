@@ -137,64 +137,64 @@ export class TagInputComponent extends TagInputAccessor implements OnInit {
      * @name onTextChangeDebounce
      * @type {number}
      */
-    @Input() private onTextChangeDebounce: number = 250;
+    @Input() public onTextChangeDebounce: number = 250;
 
     /**
      * - custom id assigned to the input
      * @name id
      */
-    @Input() private inputId: string;
+    @Input() public inputId: string;
 
     /**
      * - custom class assigned to the input
      */
-    @Input() private inputClass: string;
+    @Input() public inputClass: string;
 
     /**
      * - option to clear text input when the form is blurred
      * @name clearOnBlur
      */
-    @Input() private clearOnBlur: string;
+    @Input() public clearOnBlur: string;
 
     /**
      * - hideForm
      * @name clearOnBlur
      */
-    @Input() private hideForm: string;
+    @Input() public hideForm: string;
 
     /**
      * @name addOnBlur
      */
-    @Input() private addOnBlur: boolean;
+    @Input() public addOnBlur: boolean;
 
     /**
      * @name addOnPaste
      */
-    @Input() private addOnPaste: boolean;
+    @Input() public addOnPaste: boolean;
 
     /**
      * - pattern used with the native method split() to separate patterns in the string pasted
      * @name pasteSplitPattern
      */
-    @Input() private pasteSplitPattern: string = ',';
+    @Input() public pasteSplitPattern: string = ',';
 
     /**
      * @name blinkIfDupe
      * @type {boolean}
      */
-    @Input() private blinkIfDupe: boolean = true;
+    @Input() public blinkIfDupe: boolean = true;
 
     /**
      * @name removable
      * @type {boolean}
      */
-    @Input() private removable: boolean = true;
+    @Input() public removable: boolean = true;
 
     /**
      * @name editable
      * @type {boolean}
      */
-    @Input() private editable: boolean = false;
+    @Input() public editable: boolean = false;
 
     /**
      * @name allowDupes
@@ -308,7 +308,7 @@ export class TagInputComponent extends TagInputAccessor implements OnInit {
      * @desc array of events that get fired using @fireEvents
      * @type []
      */
-    private listeners = {
+    public listeners = {
         [constants.KEYDOWN]: <{(fun): any}[]>[],
         [constants.KEYUP]: <{(fun): any}[]>[],
         change: <{(fun): any}[]>[]
@@ -316,7 +316,7 @@ export class TagInputComponent extends TagInputAccessor implements OnInit {
 
     public isLoading: boolean = false;
 
-    constructor(private renderer: Renderer) {
+    constructor(public renderer: Renderer) {
         super();
     }
 
@@ -518,7 +518,7 @@ export class TagInputComponent extends TagInputAccessor implements OnInit {
      * @name getControl
      * @returns {FormControl}
      */
-    private getControl(): FormControl {
+    public getControl(): FormControl {
         return <FormControl>this.inputForm.value;
     }
 
@@ -613,7 +613,7 @@ export class TagInputComponent extends TagInputAccessor implements OnInit {
      * @name maxItemsReached
      * @returns {boolean}
      */
-    private get maxItemsReached(): boolean {
+    public get maxItemsReached(): boolean {
         return this.maxItems !== undefined && this.items.length >= this.maxItems;
     }
 
@@ -622,7 +622,7 @@ export class TagInputComponent extends TagInputAccessor implements OnInit {
      * @param item
      * @returns {string}
      */
-    private trackBy(item: TagModel): string {
+    public trackBy(item: TagModel): string {
         return item[this.identifyBy];
     }
 
@@ -630,7 +630,7 @@ export class TagInputComponent extends TagInputAccessor implements OnInit {
      * @name onPasteCallback
      * @param data
      */
-    private onPasteCallback(data: ClipboardEvent) {
+    public onPasteCallback(data: ClipboardEvent) {
         const text = data.clipboardData.getData('text/plain');
 
         text.split(this.pasteSplitPattern)

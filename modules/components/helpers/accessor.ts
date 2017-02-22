@@ -11,9 +11,9 @@ export function isObject(obj: any): boolean {
 }
 
 export class TagInputAccessor implements ControlValueAccessor {
-    private _items: TagModel[] = [];
-    private _onTouchedCallback: (items: TagModel[]) => void;
-    private _onChangeCallback: (items: TagModel[]) => void;
+    public _items: TagModel[] = [];
+    public _onTouchedCallback: (items: TagModel[]) => void;
+    public _onChangeCallback: (items: TagModel[]) => void;
 
     /**
      * @name displayBy

@@ -65,13 +65,13 @@ export class TagInputDropdown {
      * - desc minimum text length in order to display the autocomplete dropdown
      * @name minimumTextLength
      */
-    @Input() private minimumTextLength = 1;
+    @Input() public minimumTextLength = 1;
 
     /**
      * - number of items to display in the autocomplete dropdown
      * @name limitItemsTo
      */
-    @Input() private limitItemsTo: number;
+    @Input() public limitItemsTo: number;
 
     /**
      * @name displayBy
@@ -87,7 +87,7 @@ export class TagInputDropdown {
      * @description a function a developer can use to implement custom matching for the autocomplete
      * @name matchingFn
      */
-    @Input() private matchingFn: (value: string, target: TagModel) => boolean =
+    @Input() public matchingFn: (value: string, target: TagModel) => boolean =
          (value: string, target: TagModel): boolean => {
             const targetValue = target[this.displayBy].toString();
 
@@ -107,14 +107,14 @@ export class TagInputDropdown {
      * @name items
      * @type {TagModel[]}
      */
-    private items: TagModel[] = [];
+    public items: TagModel[] = [];
 
     /**
      * @name _autocompleteItems
      * @type {Array}
-     * @private
+     * @public
      */
-    private _autocompleteItems: TagModel[] = [];
+    public _autocompleteItems: TagModel[] = [];
 
     /**
      * @name autocompleteItems
@@ -135,7 +135,7 @@ export class TagInputDropdown {
         }) : [];
     }
 
-    constructor(@Inject(forwardRef(() => TagInputComponent)) private tagInput: TagInputComponent) {}
+    constructor(@Inject(forwardRef(() => TagInputComponent)) public tagInput: TagInputComponent) {}
 
     public ngOnInit() {
         this.onItemClicked()
@@ -208,7 +208,7 @@ export class TagInputDropdown {
      * @name addNewItem
      * @param item {Ng2MenuItem}
      */
-    private addNewItem(item: Ng2MenuItem): void {
+    public addNewItem(item: Ng2MenuItem): void {
         if (!item) {
             return;
         }
@@ -265,7 +265,7 @@ export class TagInputDropdown {
      * @param value
      * @returns {any}
      */
-    private getMatchingItems(value: string): TagModel[] {
+    public getMatchingItems(value: string): TagModel[] {
         if (!value && !this.showDropdownIfEmpty) {
             return [];
         }
@@ -282,14 +282,14 @@ export class TagInputDropdown {
     /**
      * @name setItems
      */
-    private setItems(items: TagModel[]): void {
+    public setItems(items: TagModel[]): void {
         this.items = items.slice(0, this.limitItemsTo || items.length);
     }
 
     /**
      * @name resetItems
      */
-    private resetItems(): void {
+    public resetItems(): void {
         this.items = [];
     }
 
@@ -297,7 +297,7 @@ export class TagInputDropdown {
      * @name scrollListener
      */
     @HostListener('window:scroll')
-    private scrollListener(): void {
+    public scrollListener(): void {
         if (!this.isVisible) {
             return;
         }
@@ -309,7 +309,7 @@ export class TagInputDropdown {
      * @name populateItems
      * @param data
      */
-    private populateItems(data: any): void {
+    public populateItems(data: any): void {
         this.autocompleteItems = data.map(item => {
             return typeof item === 'string' ? { [this.displayBy]: item, [this.identifyBy]: item } : item;
         });
@@ -319,7 +319,7 @@ export class TagInputDropdown {
      * @name getItemsFromObservable
      * @param text
      */
-    private getItemsFromObservable(text: string): void {
+    public getItemsFromObservable(text: string): void {
         this.tagInput.isLoading = true;
 
         this.autocompleteObservable(text)
